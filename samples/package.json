@@ -12,7 +12,6 @@
     "jquery-ui": "^1.13.1"
   },
   "scripts": {
-    "preinstall": "source ./preinstall.sh",
     "start": "python3 -m http.server 8081"
   },
   "author": "Tzvetelin Vassilev",
