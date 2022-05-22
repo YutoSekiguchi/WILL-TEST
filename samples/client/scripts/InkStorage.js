@@ -1,4 +1,4 @@
-class InkStorage {
+export default class InkStorage {
 	constructor(inkController) {
 		this.inkController = inkController;
 
