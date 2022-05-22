@@ -12,8 +12,7 @@
     "jquery-ui": "^1.13.1"
   },
   "scripts": {
-    "preinstall": "source ./preinstall.sh",
-    "start": "python -m SimpleHTTPServer 8080"
+    "start": "python3 -m http.server 8080"
   },
   "author": "Tzvetelin Vassilev",
   "license": "MIT"
