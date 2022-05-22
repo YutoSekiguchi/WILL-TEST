@@ -56,8 +56,15 @@ let layout = {
 		rule.style.height = `${height}px`;
 	},
 
-	extractColor(node, opacity) {
+	extractColor(node, opacity, pressurergba) {
+		if (pressurergba) {
+			console.log("aaaaaa")
+			app.inkCanvas.setColor(Color.fromColor([200, 200, 40, 1]));
+			return Color.fromColor([200, 200, 40, 1])
+		}
+		else {
 		let rgba = [];
+		console.log(node)
 
 		if (node.tagName == "INPUT") {
 			let value = node.value.substring(1);
@@ -72,8 +79,18 @@ let layout = {
 			if (!rgba[3]) rgba[3] = node.getMathStyle("opacity");
 		}
 
+		console.log(rgba)
+
 		return Color.fromColor(rgba);
+	}
 	},
+
+	// pressureColor(r, g, b, a) {
+	// 	let rgba = [100, g, b, 1];
+	// 	console.log("pressure", rgba)
+	// 	await app.inkCanvas.setColor(rgba);
+	// 	return Color.fromColor(rgba)
+	// },
 
 	toggleParam(name, init) {
 		if (!init) localStorage.setItem(name, !app[name]);

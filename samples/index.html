@@ -106,7 +106,7 @@
 	<div class="app" style="display: none">
 		<nav>
 			<div>
-				<img src="/images/btn_paper_02.jpg" title="Paper" class="Item Paper" onclick="dropDown.toggle('Papers')" alt="" />
+				<img src="/images/btn_paper_03.jpg" title="Paper" class="Item Paper" onclick="dropDown.toggle('Papers')" alt="" />
 
 				<label for="load_file" title="Import ink object"><img src="/images/btn_load.png" title="Load" alt="" /></label>
 				<input id="load_file" type="file" class="Button" onchange="app.inkStorage.import(this, 'uim');" />
@@ -114,8 +114,14 @@
 				<img src="/images/btn_save.png" title="Save" onclick="app.inkStorage.save()" alt="" />
 
 				<span class="ColorBox Delimiter">
-					<a href="javascript:void(0)" title="Color" class="Item Color" style="background-color: #4A4A4A;">
-						<input type="color" value="#4A4A4A">
+					<a href="javascript:void(0)" title="Color" class="Item Color" style="background-color: #000000;">
+						<input type="color" value="#000000">
+					</a>
+				</span>
+
+				<span class="TextBox Delimiter">
+					<a href="javascript:void(0)" title="Color" class="Item Text">
+						<input type="text" value="#000000">
 					</a>
 				</span>
 
@@ -164,12 +170,15 @@
 			<div class="DropDown Papers" style="visibility: hidden;">
 				<img src="/images/dropdown_arrow.png" class="Arrow" alt="" />
 				<img id="paper_01" src="/images/btn_paper_01.jpg" class="Item Paper" alt="" />
-				<img id="paper_02" src="/images/btn_paper_02.jpg" class="Item Paper Selected" alt="" />
-				<img id="paper_03" src="/images/btn_paper_03.jpg" class="Item Paper" alt="" />
+				<img id="paper_02" src="/images/btn_paper_02.jpg" class="Item Paper" alt="" />
+				<img id="paper_03" src="/images/btn_paper_03.jpg" class="Item Paper Selected" alt="" />
 			</div>
 		</nav>
 
 		<div class="Wrapper">
+			<div class="pressure-progress-wrapper">
+				<div class="pressure-progress"></div>
+			</div>
 			<h3 class="title"></h3>
 			<h5 class="identity">
 				<span id="APPName"></span>
@@ -200,5 +209,22 @@
 	<div class="flex-wrapper Overlay" style="display: none" onclick="this.style = 'display: none'">
 		<div class="Dialog" onclick="event.stopPropagation()"></div>
 	</div>
+	
+	<!-- <script>
+		const surfaceElement = document.getElementById('surface');
+		surfaceElement.addEventListener('pointermove', (event) => {
+			var canvas = $('canvas').get(1);
+			console.log(canvas)
+			if (canvas.getContext) {
+        var context = canvas.getContext('2d');
+				context.beginPath();
+				context.strokeStyle = "rgb(255, 0, 0)";
+				context.stroke();
+				context.closePath();
+				console.log("ok")
+    }
+		})
+	</script> -->
+
 </body>
 </html>

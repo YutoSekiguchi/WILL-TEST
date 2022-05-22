@@ -66,6 +66,19 @@ class Lens {
 		this.onPinchStart = function onPinchStart(e) {
 			this.abort();
 		}.bind(this);
+		
+		this.onPressure = function onPressure(e) {
+			// if (e.pressure >= 0.5) {
+			// console.log(e);
+			// console.log(this.canvas);
+			// console.log(this.canvas.width);
+			// console.log(this.canvas.getImageData(0, 0, this.canvas.width, this.canvas.height))
+			// console.log(e.pressure)
+			// layout.extractColor(null, null, [200, 1, 1, 1]);
+			// }
+			// let imageData = this.canvas.getImageData(0, 0, this.canvas.width, this.canvas.height)
+			// this.canvas.putImageData(imageData, 0, 0);
+		}.bind(this);
 
 		this.onPinch = function onPinch(e) {
 			this.zoom(e.detail.anchor, e.detail.scale);
@@ -80,6 +93,8 @@ class Lens {
 		this.canvas.surface.addEventListener("mousemove", this.onPan);
 		this.canvas.surface.addEventListener("mouseup", this.onPanEnd);
 
+		this.canvas.surface.addEventListener("pointermove", this.onPressure);
+
 		this.canvas.surface.addEventListener("pinchstart", this.onPinchStart);
 		this.canvas.surface.addEventListener("pinch", this.onPinch);
 	}
@@ -90,6 +105,8 @@ class Lens {
 		this.canvas.surface.removeEventListener("mousedown", this.onPanStart);
 		this.canvas.surface.removeEventListener("mousemove", this.onPan);
 		this.canvas.surface.removeEventListener("mouseup", this.onPanEnd);
+
+		this.canvas.surface.addEventListener("pointermove", this.onPressure);
 
 		this.canvas.surface.removeEventListener("pinchstart", this.onPinchStart);
 		this.canvas.surface.removeEventListener("pinch", this.onPinch);

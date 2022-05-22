@@ -89,9 +89,12 @@ let app = {
 		InputListener.open(inkCanvas);;
 	},
 
+	// 移動
 	redirect(sample) {
+		// どのモードでやるかの選択？紙の画面の前の画面
 		if (!sample)
 			localStorage.removeItem("sample");
+		// モードの選択
 		else
 			localStorage.setItem("sample", sample);
 

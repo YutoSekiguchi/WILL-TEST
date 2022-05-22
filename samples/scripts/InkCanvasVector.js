@@ -54,7 +54,6 @@ class InkCanvasVector extends InkCanvas {
 
 	setColor(color) {
 		super.setColor(color);
-
 		if (this.inkCanvasRaster) this.inkCanvasRaster.setColor(color);
 	}
 

@@ -41,6 +41,7 @@ class InkCanvas extends InkController {
 		*/
 	}
 
+	// 色の設定
 	setColor(color) {
 		this.color = color;
 	}
@@ -97,6 +98,14 @@ class InkCanvas extends InkController {
 			return;
 		}
 
+		$("nav .TextBox input[type=text]").val(sensorPoint.x);
+		
+		$(".pressure-progress").css("background-color", "blue").css("width", "10px")
+		let color = layout.extractColor(null, null, 255);
+		app.inkCanvas.setColor(color);
+
+		console.log(sensorPoint)
+
 		this.builder.add(sensorPoint, app.pointerPrediction ? prediction : undefined);
 
 		if (!this.requested) {
@@ -119,6 +128,7 @@ class InkCanvas extends InkController {
 		if (pathPart.phase == InkBuilder.Phase.END) {
 			if (this.strokeRenderer) {
 				let stroke = this.strokeRenderer.toStroke(this.builder);
+				console.log("stroke", stroke)
 				this.dataModel.add(stroke);
 
 				this.drawOrigin(stroke);
@@ -136,6 +146,7 @@ class InkCanvas extends InkController {
 
 			if (dirtyArea)
 				this.present(dirtyArea, pathPart.phase);
+				console.log("だ0", dirtyArea)
 		}
 		else if (pathPart.phase == InkBuilder.Phase.END) {
 			if (!this.strokeRenderer.strokeBounds) return;
@@ -145,6 +156,7 @@ class InkCanvas extends InkController {
 
 			if (dirtyArea)
 				this.present(dirtyArea, pathPart.phase);
+				console.log("だー", dirtyArea)
 		}
 	}
 

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>WILL 3 - Rendering, Manipulations and Serialization (Universal Ink Model) Demo</title>
+
+	<link rel="stylesheet" type="text/css" href="/styles/styles.css" title="main" />
+	<link rel="stylesheet" type="text/css" href="/styles/navigation.css" />
+
+	<script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script>
+
+	<link rel="stylesheet" href="/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.css">
+	<script type="text/javascript" src="/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js"></script>
+	<script type="text/javascript" src="/node_modules/jquery-contextmenu/dist/jquery.ui.position.min.js"></script>
+
+	<!-- digital-ink engine -->
+	<script src="/node_modules/digital-ink/web-integrator/web-integrator-min.js"></script>
+	<script type="text/javascript">DigitalInkWebIntegrator.integrate();</script>
+
+	<!-- dom-transformer event -->
+	<link rel="stylesheet" type="text/css" href="/node_modules/dom-transformer/dom-transformer.css" />
+	<script type="text/javascript" src="/node_modules/dom-transformer/dom-transformer-min.js"></script>
+
+	<script type="text/javascript">
+		const {
+			version,
+			fsx, utils,
+			InputDevice, InputListener,
+			SensorChannel, InkController,
+			Brush2D, BrushPrototype, ShapeFactory,
+			BrushGL, URIResolver,
+			Intersector, Selector,
+			PathPoint, PathPointContext, InkBuilder,
+			ArrayPath, InkPath2D, Stroke,
+			InkModel, SpatialContext,
+			InkCodec, RMSEBasedPrecisionCalculator, InkToolCodec,
+			Color, Poly, Rect, Point, Matrix,
+			PipelineStage, BlendMode,
+			InkCanvas2D, StrokeRenderer2D,
+			InkCanvasGL, StrokeRendererGL,
+			InkPathProducer
+		} = DigitalInk;
+
+		const {TransformEvent, PinchEvent} = DOMTransformer;
+
+		DigitalInkWebIntegrator.linkWorkers(InkPathProducer);
+	</script>
+
+  <script type="text/javascript" src="./scripts/Pressure.js"></script>
+
+
+</head>
+<body>
+	<div class="app" style="">
+
+			<canvas class="layer-transforms" style="display: none" oncontextmenu="event.preventDefault()"></canvas>
+
+			<canvas id="surface" oncontextmenu="event.preventDefault()" style="background-color: white;"></canvas>
+			<canvas id="raster-runtime" style="display: none" oncontextmenu="event.preventDefault()"></canvas>
+
+			<div class="selection selection-vector" style="display: none"></div>
+			<div class="selection selection-raster" style="display: none"></div>
+
+	</div>
+  <script>
+		const surfaceElement = document.getElementById('surface');
+		surfaceElement.addEventListener('pointermove', (event) => {
+			
+		})
+	</script>
+</body>
+</html>

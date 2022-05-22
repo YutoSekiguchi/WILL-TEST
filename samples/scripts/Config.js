@@ -616,7 +616,11 @@ let config = {
 	getOptions(sample, toolID, color) {
 		let toolConfig = this.tools[toolID];
 
+		console.log("おーい", context)
 		context.reset(sample, toolConfig.brush, color, toolConfig.dynamics, toolConfig.statics)
+
+		console.log(context.color)
+		// context.color.red = 200;
 
 		return {
 			strokeRenderer: {
