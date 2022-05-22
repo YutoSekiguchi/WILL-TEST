@@ -5,7 +5,7 @@ _**/
 
 # Idea project
 .idea/
-
+/samples/package-lock.json
 /samples/node_modules
 # /samples/wacom/digital-ink
 /samples/wacom/js-ext/js-ext.*
