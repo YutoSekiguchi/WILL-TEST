@@ -7,7 +7,7 @@ _**/
 .idea/
 
 /samples/node_modules
-/samples/wacom/digital-ink
+# /samples/wacom/digital-ink
 /samples/wacom/js-ext/js-ext.*
 /samples/wacom/dom-transformer/dom-transformer.*js
 
