@@ -12,7 +12,7 @@
     "jquery-ui": "^1.13.1"
   },
   "scripts": {
-    "start": "python3 -m http.server 8081"
+    "start": "python3 -m http.server 8080"
   },
   "author": "Tzvetelin Vassilev",
   "license": "MIT"
