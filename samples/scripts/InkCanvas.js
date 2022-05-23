@@ -101,8 +101,10 @@ class InkCanvas extends InkController {
 		let pressure_gauge = sensorPoint.pressure? sensorPoint.pressure * 333: 0;
 
 		if (pressure_gauge > 200) { pressure_gauge = 200; }
-		
-		$(".pressure-progress").css("background-color", "blue").css("width", Math.floor(pressure_gauge)+"px")
+
+		$(".pressure-progress").css("background-color", "rgb("+ Math.floor(pressure_gauge*255/200) +", 0, "+ 255- Math.floor(pressure_gauge*255/200) +")").css("width", Math.floor(pressure_gauge)+"px")
+
+
 
 		console.log(sensorPoint)
 
