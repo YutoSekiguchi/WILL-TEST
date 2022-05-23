@@ -67,6 +67,7 @@ class Lens {
 			this.abort();
 		}.bind(this);
 		
+		// この関数今度消しても良いかも？？必要に応じて対応しよ
 		this.onPressure = function onPressure(e) {
 			// if (e.pressure >= 0.5) {
 			// console.log(e);

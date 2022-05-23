@@ -101,8 +101,6 @@ class InkCanvas extends InkController {
 		let pressure_gauge = sensorPoint.pressure? sensorPoint.pressure * 333: 0;
 
 		if (pressure_gauge > 200) { pressure_gauge = 200; }
-
-		$("nav .TextBox input[type=text]").val(sensorPoint.x);
 		
 		$(".pressure-progress").css("background-color", "blue").css("width", Math.floor(pressure_gauge)+"px")
 

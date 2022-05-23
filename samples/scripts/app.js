@@ -17,7 +17,7 @@ let app = {
 			if (sample != 2) document.querySelector(".app").className += " vector";
 			if (sample != 1) document.querySelector(".app").className += " raster";
 
-			document.querySelector(".title").innerText = sample + ". " + document.querySelector("#sample" + sample).innerHTML;
+			// document.querySelector(".title").innerText = sample + ". " + document.querySelector("#sample" + sample).innerHTML;
 			document.querySelector(".app").style.display = "";
 
 			// Safari bug-fix, Safari check is needed

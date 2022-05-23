@@ -114,16 +114,16 @@
 				<img src="/images/btn_save.png" title="Save" onclick="app.inkStorage.save()" alt="" />
 
 				<span class="ColorBox Delimiter">
-					<a href="javascript:void(0)" title="Color" class="Item Color" style="background-color: #000000;">
+					<a href="javascript:void(0)" title="Color" class="Item Color" style="background-color: #000000; box-sizing:border-box; border: 2px solid white;">
 						<input type="color" value="#000000">
 					</a>
 				</span>
 
-				<span class="TextBox Delimiter">
+				<!-- <span class="TextBox Delimiter">
 					<a href="javascript:void(0)" title="Color" class="Item Text">
 						<input type="text" value="#000000">
 					</a>
-				</span>
+				</span> -->
 
 				<img src="/images/btn_clear.png" class="DelimiterRight" title="Clear" onclick="app.inkCanvas.clear()" alt="" />
 
@@ -161,8 +161,8 @@
 				<input id="load_tool" type="file" accept="application/protobuf; proto=WacomInkFormat3.Tool" onchange="app.inkStorage.import(this, 'tool')" />
 
 				<div class="BackToMenu">
-					<a href="javascript:void(0)" title="Toggle Pointer prediction" class="Button pointerPrediction" onclick="layout.toggleParam('pointerPrediction')">PP</a>
-					<a href="javascript:void(0)" title="Toggle downsampling" class="Button downsampling" onclick="layout.toggleParam('downsampling')">DS</a>
+					<!-- <a href="javascript:void(0)" title="Toggle Pointer prediction" class="Button pointerPrediction" onclick="layout.toggleParam('pointerPrediction')">PP</a>
+					<a href="javascript:void(0)" title="Toggle downsampling" class="Button downsampling" onclick="layout.toggleParam('downsampling')">DS</a> -->
 					<img src="/images/btn_back.png" title="Back to menu" onclick="app.redirect()" style="cursor: pointer" alt="" />
 				</div>
 			</div>
@@ -179,7 +179,6 @@
 			<div class="pressure-progress-wrapper">
 				<div class="pressure-progress"></div>
 			</div>
-			<h3 class="title"></h3>
 			<h5 class="identity">
 				<span id="APPName"></span>
 				<span id="APPVersion"></span>,
