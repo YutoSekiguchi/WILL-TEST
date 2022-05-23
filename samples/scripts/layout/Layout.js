@@ -57,12 +57,12 @@ let layout = {
 	},
 
 	extractColor(node, opacity, pressurergba) {
-		if (pressurergba) {
-			console.log("aaaaaa")
-			app.inkCanvas.setColor(Color.fromColor([200, 200, 40, 1]));
-			return Color.fromColor([200, 200, 40, 1])
-		}
-		else {
+		// if (pressurergba) {
+		// 	console.log("aaaaaa")
+		// 	app.inkCanvas.setColor(Color.fromColor([200, 200, 40, 1]));
+		// 	return Color.fromColor([200, 200, 40, 1])
+		// }
+		// else {
 		let rgba = [];
 		console.log(node)
 
@@ -82,7 +82,7 @@ let layout = {
 		console.log(rgba)
 
 		return Color.fromColor(rgba);
-	}
+	// }
 	},
 
 	// pressureColor(r, g, b, a) {
