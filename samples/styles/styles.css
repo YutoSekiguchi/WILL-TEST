@@ -45,7 +45,6 @@ canvas, .title, .identity {
 }
 .pressure-progress {
 	border-radius: 10px;
-	background-color: red;
 	width: 0px; 
 	height: 20px;
 }

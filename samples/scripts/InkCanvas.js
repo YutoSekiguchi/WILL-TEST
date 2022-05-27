@@ -15,6 +15,10 @@ class InkCanvas extends InkController {
 
 		this.dataModel = app.model;
 
+		this.averagePressure = 0; // 1画あたりの平均筆圧
+		this.sumPressure = 0; // 1画あたりの合計筆圧
+		this.movePointerCount = 0; // 1画あたりの筆圧（move関数）取得回数
+
 		Object.defineProperty(this, "strokes", {get: () => this.dataModel.inkModel.content, enumerable: true});
 		Object.defineProperty(this, "transform", {get: () => this.lens.transform, set: value => (this.lens.transform = value), enumerable: true});
 	}
@@ -86,6 +90,9 @@ class InkCanvas extends InkController {
 	}
 
 	begin(sensorPoint) {
+		this.averagePressure = 0;
+		this.sumPressure = 0;
+		this.movePointerCount = 0;
 		this.reset(sensorPoint);
 
 		this.builder.add(sensorPoint);
@@ -97,14 +104,14 @@ class InkCanvas extends InkController {
 			this.builder.ignore(sensorPoint);
 			return;
 		}
-
+		// ストローク中の筆圧を加算する
+		this.sumPressure += sensorPoint.pressure;
+		// move関数が呼ばれるたびカウントする
+		this.movePointerCount += 1;
+		// 筆圧ゲージ用
 		let pressure_gauge = sensorPoint.pressure? sensorPoint.pressure * 333: 0;
-
 		if (pressure_gauge > 200) { pressure_gauge = 200; }
-
 		$(".pressure-progress").css("background-color", "rgb("+ Math.floor(Math.floor(pressure_gauge)*255/200) +", 0, "+ Math.floor(255-Math.floor(pressure_gauge)*255/200) +")").css("width", Math.floor(pressure_gauge)+"px")
-
-
 
 		console.log(sensorPoint)
 
@@ -120,8 +127,18 @@ class InkCanvas extends InkController {
 	}
 
 	end(sensorPoint) {
+		// 終了時の平均筆圧
+		if (this.movePointerCount!=0){
+			this.averagePressure = this.sumPressure/this.movePointerCount;
+		}
+		console.log(this.canvas.getImageData(0, 0, this.canvas.width, this.canvas.height));
 		this.builder.add(sensorPoint);
-		$(".pressure-progress").css("background-color", "blue").css("width", "0px")
+
+		// 終了時の平均筆圧をゲージとして可視化
+		let averagePressureGauge = this.averagePressure? this.averagePressure * 333: 0;
+		if (averagePressureGauge > 200) { averagePressureGauge = 200; }
+		$(".pressure-progress").css("background-color", "rgb("+ Math.floor(Math.floor(averagePressureGauge)*255/200) +", 0, "+ Math.floor(255-Math.floor(averagePressureGauge)*255/200) +")").css("width", Math.floor(averagePressureGauge)+"px");
+
 		this.builder.build();
 	}
 
